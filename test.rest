@@ -1,0 +1,152 @@
+@host = http://localhost:5000
+
+###
+#   =========================
+#   PLACES
+#   =========================
+###
+
+POST {{host}}/add_place
+Content-Type: application/json
+
+{
+    "name": "Rzory",
+    "type": "Miasto",
+    "description": "Miasto Pani Moniki",
+    "map_url": "URL_HERE",
+    "game_url": "URL_HERE"
+}
+
+###
+
+POST {{host}}/places_count
+
+###
+
+POST {{host}}/get_all_places
+
+###
+
+POST {{host}}/get_place
+Content-Type: application/json
+
+{
+    "id": "6162707ea3a8a17eef79c170"
+}
+
+###
+
+POST {{host}}/update_place
+Content-Type: application/json
+
+{
+    "id": "6162708ea3a8a17eef79c172",
+    "description": "none"
+}
+
+###
+
+POST {{host}}/delete_place
+Content-Type: application/json
+
+{
+    "id": "6161f19db5eb4789a940b8ec"
+}
+
+###
+#   =========================
+#   EVENTS
+#   =========================
+###
+
+POST {{host}}/add_event
+Content-Type: application/json
+
+{
+    "title" : "Festiwal Mydła",
+    "takes_place_on" : "2021-10-12T20:30",
+    "img_link" : "smaczne_mydlo1.png",
+    "description" : "Bardzo ciekawe przedsięwzięcie"
+}
+
+###
+
+POST {{host}}/get_all_events
+
+###
+
+POST {{host}}/get_event
+Content-Type: application/json
+
+{
+    "id": "6162c0bdc3a1acdaa951027f"
+}
+
+###
+
+POST {{host}}/update_event
+Content-Type: application/json
+
+{
+    "id" : "6162c4c392dcbf2a63ef4a17",
+    "description" : "Zachęcamy do wzięcia udziału bardzo bardzo"
+}
+
+###
+
+POST {{host}}/delete_event
+Content-Type: application/json
+
+{
+    "id": "6162bdb153cdf0372056b997"
+}
+
+
+###
+#   =========================
+#   SUGGESTIONS
+#   =========================
+###
+
+POST {{host}}/add_suggestion
+Content-Type: application/json
+
+{
+    "title" : "1 Maja",
+    "description" : "Dzielnica Kapłona"
+}
+
+###
+
+POST {{host}}/get_all_suggestions
+
+###
+
+POST {{host}}/get_suggestion
+Content-Type: application/json
+
+{
+    "id": "6161b7aea803fe4e9ec14872"
+}
+
+###
+
+POST {{host}}/delete_suggestion
+Content-Type: application/json
+
+{
+    "id": "6161b7a8a803fe4e9ec1486f"
+}
+
+###
+#   =========================
+#   FILES
+#   =========================
+###
+
+POST {{host}}/delete_img
+Content-Type: application/json
+
+{
+    "filename": "qds2aqlvl6ppajonk.png"
+}

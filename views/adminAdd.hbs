@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+{{> utils}}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <div class="menu">
+        <img class="menu__logo" src="/img/logo_main.png" alt="Logo">
+        <div class="wrapper">
+            <div class="menu__content">
+                <div class="menu__sides"></div>
+                <div class="menu__list">
+                    <a class="menu__a" href="/">Strona główna</a>
+                    <a class="menu__a" href="/admin/add">Dodawanie</a>
+                    <a class="menu__a" href="/admin/edit">Edytowanie</a>
+                    <a class="menu__a" href="/admin/remove">Usuwanie</a>
+                </div>
+                <div class="menu__sides"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="empty"></div>
+    <div class="content">
+        <div id="logout"><img src="/img/logout.png"></div>
+        <p>Dodawanie miejsc</p>
+        <div>
+            <input type="text" id="miejsce"  placeholder="miejsce">
+            <input type="text" id="typ" placeholder="typ">
+            <input type="text" id="map" placeholder="map src">
+            <input type="text" id="game" placeholder="game src">
+            <textarea id="text1" style="width: 80%;"></textarea>
+            <input type="submit" id="sub1">
+        </div>
+        <p>Dodawanie wydarzeń</p>
+        <div>
+            <input type="text" id="title" placeholder="tytuł">
+            <input type="date" id="date" placeholder="Planned date">
+            <input type="time" id="time" placeholder="Planned time">
+            <input type="text" id="img_link" placeholder="Img link">
+            <textarea id="text2" style="width: 80%;"></textarea>
+            <input type="submit" id="sub2">
+        </div>  
+        <p>Dodawanie plików</p>
+        <div>
+            <input type="file" id="f1">
+        </div>
+
+        {{> adminUtils}}
+    </div>
+</body>
+</html>

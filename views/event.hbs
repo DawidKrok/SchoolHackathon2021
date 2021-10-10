@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+{{> utils}}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/events.css">
+    
+</head>
+
+<body>
+    <div class="menu">
+        <img class="menu__logo" src="/img/logo_main.png" alt="Logo">
+        <div class="wrapper">
+            <div class="menu__content">
+                <div class="menu__sides"></div>
+                <div class="menu__list">
+                    <a class="menu__a" href="/">Strona główna</a>
+                </div>
+                <div class="menu__sides"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="empty"></div>
+    <div class="content">
+        <div id="title"></div>
+        <div id="create_date"></div>
+        <div id="date"></div>
+        <div id="description"></div>
+        <div id="left"></div>
+        <div id="right"></div>
+        <script>
+            var title = document.getElementsByTagName('title')[0];
+            var title1 = $("#title")[0];
+            var createDate = $("#create_date")[0];
+            var date = $("#date")[0];
+            var description = $("#description")[0];
+            var left = $("#left")[0];
+            var right = $("#right")[0];
+            var index = {{eventIndex}};
+            var id = "{{eventId}}";
+            dataFetch("/get_all_events")
+                .then(data => {
+                    title.innerHTML = data[index].title;
+                    title1.innerHTML = data[index].title;
+                    createDate.innerHTML = data[index].published_on.substr(0, 10);
+                    date.innerHTML = data[index].takes_place_on.substr(0, 10)+" "+data[index].takes_place_on.substr(11, 5);
+                    description.innerHTML = data[index].description;
+
+                    if (index > 0) {
+                        left.onclick = function(){
+                            window.location.href = "/event/"+ (index-1)+"/"+data[index-1]._id;
+                        }
+                        
+                    }
+                    else {
+                        left.onclick = function () {
+                            window.location.href = "/event/" + (data.length-1) + "/" + data[data.length-1]._id;
+                        }
+                    }
+
+                    if (index < data.length - 1) {
+                        right.onclick = function(){
+                            window.location.href = "/event/" + (index+1)+"/"+data[index+1]._id;
+                        }
+                    }
+                    else {
+                        right.onclick = function(){
+                            window.location.href = "/event/0/"+data[0]._id;
+                        }
+                    }
+                })
+        </script>
+    </div>
+</body>
+</html>

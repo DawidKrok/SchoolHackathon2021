@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/login.js" defer></script>
+</head>
+<body>
+    <div class="menu">
+        <img class="menu__logo" src="/img/logo_main.png" alt="Logo">
+        <div class="wrapper">
+            <div class="menu__content">
+                <div class="menu__sides"></div>
+                <div class="menu__list">
+                    <a class="menu__a" href="/">Strona główna</a>
+                </div>
+                <div class="menu__sides"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="empty"></div>
+    <div class="content">
+        <form method="POST">
+            <p id="com">Zaloguj się do panelu administratora</p>
+            <div class="email">
+                <input type="text" name="email" placeholder="Email">
+                <p class="email-err">*invalid email</p>
+            </div>
+            <div class="pass">
+                <input type="password" name="password" placeholder="Password">
+                <p class="pass-err">*invalid password</p>
+            </div>
+            <button>Submit</button>
+            {{!-- <a class="to_register" href="register">Not registered yet?</a> --}}
+        </form>
+    </div>
+</body>
+</html>

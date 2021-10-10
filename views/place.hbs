@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+{{> utils}}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/places.css">
+    
+</head>
+
+<body>
+    <div class="menu">
+        <img class="menu__logo" src="/img/logo_main.png" alt="Logo">
+        <div class="wrapper">
+            <div class="menu__content">
+                <div class="menu__sides"></div>
+                <div class="menu__list">
+                    <a class="menu__a" href="/">Strona główna</a>
+                    <a class="menu__a" href="#content">Zwiedzaj</a>
+                    <a class="menu__a" href="#text">Informacje</a>
+                    <a class="menu__a" href="#game">Gra</a>
+                </div>
+                <div class="menu__sides"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="empty"></div>
+    <div class="content">
+        <div style="display: hidden;" id="content"></div>
+        <div id="tittleS"></div>
+        <iframe id="map"></iframe>
+        <div id="text"></div>
+        <iframe id="game"></iframe>
+        <div id="arrow-left"></div>
+        <div id="arrow-right"></div>
+        <script>
+            var left = $("#arrow-left")[0];
+            var right = $("#arrow-right")[0];
+            var title = $("#tittleS")[0];
+            var map = $("#map")[0];
+            var text = $("#text")[0];
+            var game = $("#game")[0];
+
+
+            dataFetch("/get_all_places")
+                .then(data => {
+                    list = data;
+                    listLen = list.length - 1;
+                    index = {{ placeIndex }};
+
+
+            function goLeft() {
+                if (index > 0) {
+                    window.location.href = "/place/" + (index - 1) + "/" + list[index - 1]._id;
+                }
+                else {
+                    window.location.href = "/place/" + listLen + "/" + list[listLen]._id;
+                }
+            }
+
+            function goRight() {
+                if (index < listLen) {
+                    window.location.href = "/place/" + (index + 1) + "/" + list[index + 1]._id;
+                }
+                else {
+                    window.location.href = "/place/" + 0 + "/" + list[0]._id;
+                }
+
+            }
+
+            left.onclick = goLeft;
+            right.onclick = goRight;
+
+            title.innerHTML = list[index].name;
+            map.src = list[index].map_url;
+            text.innerHTML = list[index].description;
+            if(list[index].game_url == "none")
+                game.style.display = "none";
+            else
+                game.src = list[index].game_url;
+                });
+        </script>
+    </div>
+</body>
+
+</html>

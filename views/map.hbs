@@ -1,0 +1,17 @@
+{{> utils}}
+<script>
+    var have = 0
+    dataFetch("/get_all_places")
+    .then(data =>{
+        for(i = 0; i<data.length; i++)
+        {
+            if(data[i]._id == "{{placeId}}")
+            {
+                have = 1;
+                window.location.href = "/place/"+i+"/{{placeId}}";
+                }
+        }
+        if(have == 0)
+            window.location.href = "/404";
+    })
+</script>

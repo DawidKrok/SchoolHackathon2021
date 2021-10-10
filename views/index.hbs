@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+{{> headMain}}
+{{> utils}}
+
+<body>
+    <div class="menu">
+        <img class="menu__logo" src="img/logo_main.png" alt="Logo">
+        <div class="wrapper">
+            <div class="menu__content">
+                <div class="menu__sides"></div>
+                <div class="menu__list">
+                    <a class="menu__a" href="#explore">Zwiedzaj</a>
+                    <a class="menu__a" href="#explore">Zobacz miejsca</a>
+                    <a class="menu__a" href="#eventsLink">Wydarzenia</a>
+                    <a class="menu__a" href="#info">Informacje</a>
+                </div>
+                <div class="menu__sides"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="start__background"></div>
+    <div class="start__gradient"></div>
+    <div class="start">
+        <p class="start__title">Odkryj z nami Jastrzębie!</p>    
+        <a href="#explore" class="start__go">Rozpocznij zwiedzanie</a>
+        <div class="start__arrow" id="explore">
+            <svg viewBox="0 0 38 21" height="25px">
+                <path d="M19,21a2,2,0,0,1-1.41-.59l-17-17A2,2,0,0,1,.59.59a2,2,0,0,1,2.82,0L19,16.17,34.59.59a2,2,0,0,1,2.82,0,2,2,0,0,1,0,2.82l-17,17A2,2,0,0,1,19,21Z"/>
+            </svg>
+        </div>
+    </div>
+    <div class="explore" id="explore">
+        <div class="wrapper">
+            <div class="explore__content">
+                <p class="explore__title" data-aos="fade-up">
+                    ZOBACZ NAJCIEKAWSZE MIEJSCA W JASTRZĘBIU
+                </p>
+                <div class="explore__places" data-aos="fade-up">
+                    <div class="explore__map">
+                        <iframe class="explore__iframe" src="https://www.google.com/maps/d/embed?mid=1wsy2appeDsRWjEfPWgm_wMVWpkpM47hB"></iframe>
+                    </div>
+                    <div class="explore__list">
+
+                    </div>
+                        <script>
+                            var places = document.getElementsByClassName('explore__list')[0];
+                            dataFetch("get_all_places")
+                                .then(data => {
+                                    for (i = 0; i < data.length; i++) {
+                                        places.innerHTML += "<a class=\"item\" href='/place/"+i+"/"+data[i]._id+"''>" + data[i].name + "</a>";
+                                    }
+                                });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="events" id="eventsLink">
+        <div class="wrapper">
+            <div class="events__content">
+                <p class="events__title">NADCHODZĄCE WYDARZENIA</p>
+                <div id="events">
+                    {{!-- Here comes the ummm, script --}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/events.js"></script>
+
+    <div class="forms">
+        <div class="wrapper">
+            <div class="forms__content">
+                <div class="addplace">
+                <div class="addplace__head">
+                        <img src="img/icons/placeTrim.png" alt="ico" class="addplace__icon">
+                        <div class="addplace__title">
+                            DODAJ MIEJSCE
+                        </div>
+                    </div>
+                    <div class="addplace__form">
+                        <input class="addplace__name" type="text" id="miejsce" placeholder="Wpisz nazwę miejsca">
+                        <textarea class="addplace__desc" id="opis" placeholder="Opisz wybrane miejsce, podaj jego lokalizację i uzasadnij swój wybór"></textarea>
+                        <input class="addplace__send" type="submit" id="sub" value="ZAPROPONUJ">
+
+                        <script src=""></script>
+                    </div>
+                </div>
+                <div class="addevent">
+                    <div class="addevent__head">
+                        <img src="img/icons/calendar.png" alt="ico" class="addevent__icon">
+                        <div class="addevent__title">
+                            DODAJ WYDARZENIE
+                        </div>
+                    </div>
+                    <div class="addevent__form">
+                        <input class="addevent__name" type="text" id="miejsce1" placeholder="Wpisz nazwę wydarzenia">
+                        <textarea class="addevent__desc" id="opis1" placeholder="Opisz wydarzenie, podaj czas i miejsce"></textarea>
+                        <input class="addevent__send" type="submit" id="sub1" value="ZAPROPONUJ">
+
+                        <script src="/js/makeSuggestion.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info" id="info">
+        <div class="wrapper">
+            <div class="info__content">
+                <div class="info__who">
+                    Strona została wykonana w ramach Hackathonu 2021<br><br>
+                    Autorzy:<br>
+                    Dawid Krok<br>
+                    Aleksandra Bryja<br>
+                    Andrzej Manderla<br>
+                    Daria Durkowska<br>
+                    Dawid Jokiel<br>
+                </div>
+                <div class="info__admin">
+                    Strona Szkoły - <a href="https://zs6sobieski.pl/">zs6.sobieski.pl</a><br>
+                    <a href="">Panel Administratora</a>
+                </div>
+                <div class="info__logo">
+                    <img src="img/crocs.png" alt="La Crocs">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{> AOSinit}}
+</body>
+
+</html>
